@@ -8,11 +8,11 @@
 
 void swap_func(int *a, int *b)
 {
-    int tmp;
+	int tmp;
 
-    tmp = *a;
-    *a = *b;
-    *b = tmp;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 /**
@@ -27,11 +27,11 @@ void swap_func(int *a, int *b)
 
 void bubble_sort(int *array, size_t size)
 {
-    size_t i, j, flag;
+	size_t i, j, flag;
 
-    if (size >= 2)
-    {
-    	for (i = 0; i < size - 1; i++)
+	if (size >= 2)
+	{
+		for (i = 0; i < size - 1; i++)
 		{
 			flag = 0;
 			for (j = 0; j < size - 1 - i; j++)
@@ -46,6 +46,6 @@ void bubble_sort(int *array, size_t size)
 			if (flag == 0)
 				break;
 		}
-    }
-    
+	}
+
 }
