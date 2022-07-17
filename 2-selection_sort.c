@@ -2,6 +2,7 @@
 
 /**
 * swap_func - a function to swap array elements
+*
 * @a: the array to swap
 * @b: the array to be swapped
 */
@@ -17,6 +18,7 @@ void swap_func(int *a, int *b)
 
 /**
  * selection_sort - sorts an array of elements
+ *
  * @array: array of elements
  * @size: Number of elements in @array
  *
