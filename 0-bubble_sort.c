@@ -18,7 +18,7 @@ void swap(int *x, int *y)
 
 /**
  * bubble_sort - Sorts an array using the Bubble sort algorithm
- * 
+ *
  * @array: Array to be sorted
  * @size: Size of the array
  */
