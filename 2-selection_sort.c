@@ -26,23 +26,23 @@ void selection_sort(int *array, size_t size)
 {
 	size_t i, j, j_min;
 
-	if (size >= 2)
+	if (array == NULL)
+		return;
+
+	for (i = 0; i < size - 1; i++)
 	{
-		for (i = 0; i < size - 1; i++)
+		j_min = i;
+		for (j = i + 1; j < size; j++)
 		{
-			j_min = i;
-			for (j = i + 1; j < size; j++)
+			if (array[j] < array[j_min])
 			{
-				if (array[j] < array[j_min])
-				{
-					j_min = j;
-				}
+				j_min = j;
 			}
-			if (j_min != i)
-			{
-				swap_func(&array[i], &array[j_min]);
-				print_array(array, size);
-			}
+		}
+		if (j_min != i)
+		{
+			swap_func(&array[i], &array[j_min]);
+			print_array(array, size);
 		}
 	}
 }
