@@ -2,17 +2,17 @@
 /**
  * swap - swap position of the elements passed
  *
- * @x: pointer the element one
- * @y: pointer the element two
+ * @a: pointer the element one
+ * @b: pointer the element two
  */
 
-void swap(int *x, int *y)
+void swap(int *a, int *b)
 {
 	int tmp;
 
-	tmp = *x;
-	*x = *y;
-	*y = tmp;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 /**
