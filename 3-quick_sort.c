@@ -1,55 +1,96 @@
 #include "sort.h"
 
 /**
- * quick_sort - function that Sorts the elements in the array
- * @array: array to sort
- * @size: size of array
+ * swap - swap position of the elements passed
  *
- * Returns a new array with the sorted elements.
+ * @a: pointer the element one
+ * @b: pointer the element two
  */
 
- void swap_func(int *a, int *b)
- {
-    int temp;
-
-    temp = *a;
-    *a = *b;
-    *b = temp;
- }
-
-int partition(int *array, int low, int high)
+void swap(int *a, int *b)
 {
-    int pivot = array[high];
+		int temp;
 
-    int j, i = (low - 1);
-    for (j = low; j < high; j++)
-    {
-    if (array[j] <= pivot) {
-        i++;
-        swap_func(&array[i], &array[j]);
-    }
-    }
-
-    swap_func(&array[i + 1], &array[high]);
-
-  
-  return (i + 1);
+		temp = *a;
+		*a = *b;
+		*b = temp;
 }
 
-void _quickSort(int array[], int low, int high) {
-  if (low < high) {
+/**
+ * partition - split the array using the pivot
+ *
+ * @array: array to be sorted
+ * @start: start of the array
+ * @end: end of the array
+ * @size: size of the array
+ *
+ * Return: index of the pivot
+ */
 
-    int pi = partition(array, low, high);
-    
-    _quickSort(array, low, pi - 1);
-    _quickSort(array, pi + 1, high);
-  }
+int partition(int *array, int start, int end, size_t size)
+{
+	int i;
+	int pivot, pI;
+
+	pivot = array[end];
+	pI = start;
+
+	for (i = start; i < end; i++)
+	{
+		if (array[i] < pivot)
+		{
+			if (pI != i)
+			{
+				swap(&array[pI], &array[i]);
+				print_array(array, size);
+			}
+			pI++;
+		}
+	}
+
+	swap(&array[pI], &array[end]);
+
+	if (array[end] != pivot)
+	{
+		print_array(array, size);
+	}
+	return (pI);
 }
+
+/**
+ * quick_recursive - recursive function for quick_sort function
+ *
+ * @array: array to be sorted
+ * @start: start of array
+ * @end: end of array
+ * @size: size of array
+ */
+
+void quick_recursive(int *array, int start, int end, size_t size)
+{
+	int pI;
+
+	if (start >= end || start < 0)
+		return;
+
+	pI = partition(array, start, end, size);
+	quick_recursive(array, start, pI - 1, size);
+	quick_recursive(array, pI + 1, end, size);
+}
+
+/**
+ * quick_sort - calls quit sort function for each element
+ *
+ * @array: array to be sorted
+ * @size: size of array
+ */
 
 void quick_sort(int *array, size_t size)
 {
-    if (size >= 2)
-    {
-    _quickSort(array, 0, size);
-    }
+	size_t start, end;
+
+	start = 0;
+	end = size - 1;
+
+	quick_recursive(array, start, end, size);
 }
