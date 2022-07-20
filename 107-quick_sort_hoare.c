@@ -2,12 +2,12 @@
 #include <stdio.h>
 
 /**
- * swap - swap integers at positions `i` and `j` in `array`
+ * swap_func - swap integers at positions `i` and `j` in `array`
  * @array: array to swap positions
  * @i: left index
  * @j: right index
  */
-void swap(int *array, int i, int j)
+void swap_func(int *array, int i, int j)
 {
 	int tmp;
 
@@ -31,7 +31,7 @@ int partition(int *array, int left, int right, size_t size)
 
 	if (left >= right)
 		return (left);
-	swap(array, left, right);
+	swap_func(array, left, right);
 	print_array(array, size);
 	pivot = array[left];
 	i = left;
@@ -48,23 +48,23 @@ int partition(int *array, int left, int right, size_t size)
 
 		if (i == j)
 		{
-			swap(array, i - 1, left);
+			swap_func(array, i - 1, left);
 			print_array(array, size);
 			return (i - 1);
 		}
 		if (i == right && pivot < array[right])
 		{
-			swap(array, left, right - 1);
+			swap_func(array, left, right - 1);
 			print_array(array, size);
 			return (right - 1);
 		}
 		if (i == right && pivot > array[right])
 		{
-			swap(array, left, right);
+			swap_func(array, left, right);
 			print_array(array, size);
 			return (right);
 		}
-		swap(array, i, j);
+		swap_func(array, i, j);
 		print_array(array, size);
 	}
 }
